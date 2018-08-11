@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
+import requireAuth from 'components/requireAuth.js';
 
 class CommentBox extends Component {
-  state = {
-    comment: ''
-  };
+  state = { comment: '' };
 
   handleOnChange = event => {
     this.setState({ comment: event.target.value });
@@ -38,4 +37,4 @@ class CommentBox extends Component {
 export default connect(
   null,
   actions
-)(CommentBox);
+)(requireAuth(CommentBox));
