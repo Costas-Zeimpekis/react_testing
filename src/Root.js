@@ -2,16 +2,15 @@ import React from 'react';
 import reducers from 'reducers';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
-import reduxPromise from 'redux-promise';
+import async from 'middlewares/async';
 
-const initialState = {};
-const middleware = [reduxPromise];
+const middlewares = [async];
 
 export default ({ children, initialState = {} }) => {
   const store = createStore(
     reducers,
     initialState,
-    applyMiddleware(...middleware)
+    applyMiddleware(...middlewares)
   );
 
   return <Provider store={store}>{children}</Provider>;
